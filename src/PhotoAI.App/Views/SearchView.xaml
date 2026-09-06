@@ -1,0 +1,80 @@
+<UserControl x:Class="PhotoAI.App.Views.SearchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:PhotoAI.App.ViewModels">
+
+    <UserControl.Resources>
+        <DataTemplate DataType="{x:Type vm:MediaItemViewModel}">
+            <Border Background="{StaticResource CardBrush}" 
+                    CornerRadius="6" Margin="4"
+                    Width="220" Height="240"
+                    BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0" ClipToBounds="True" CornerRadius="6,6,0,0">
+                        <Image Source="{Binding Thumbnail}" 
+                               Stretch="UniformToFill"
+                               RenderOptions.BitmapScalingMode="HighQuality"/>
+                    </Border>
+
+                    <Border Grid.Row="1" Background="#CC2D2D30" Padding="8,6">
+                        <StackPanel>
+                            <TextBlock Text="{Binding FileName}" 
+                                       Foreground="{StaticResource TextPrimaryBrush}" 
+                                       FontSize="12" FontWeight="SemiBold"
+                                       TextTrimming="CharacterEllipsis"/>
+                            <TextBlock Foreground="{StaticResource TextSecondaryBrush}" FontSize="11" Margin="0,2,0,0">
+                                <Run Text="{Binding ResolutionText, Mode=OneWay}"/>
+                                <Run Text=" | "/>
+                                <Run Text="{Binding FileSizeText, Mode=OneWay}"/>
+                            </TextBlock>
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <DockPanel>
+        <!-- Header -->
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,16">
+            <TextBlock Text="Search" FontSize="24" FontWeight="Bold" 
+                       Foreground="{StaticResource TextPrimaryBrush}"/>
+            <TextBlock Text="{Binding StatusMessage}" 
+                       Foreground="{StaticResource TextSecondaryBrush}" FontSize="13" Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <!-- Filters -->
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Margin="0,0,0,12">
+            <TextBlock Text="Filter:" Foreground="{StaticResource TextSecondaryBrush}" 
+                       VerticalAlignment="Center" Margin="0,0,8,0"/>
+            <ComboBox ItemsSource="{Binding Filters}" 
+                      SelectedItem="{Binding SelectedFilter}"
+                      Width="120" Background="{StaticResource CardBrush}" 
+                      Foreground="{StaticResource TextPrimaryBrush}"/>
+        </StackPanel>
+
+        <!-- Results Grid -->
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl ItemsSource="{Binding Results}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <!-- No Results -->
+        <TextBlock DockPanel.Dock="Bottom"
+                   Text="Enter a search query to find photos"
+                   Foreground="{StaticResource TextSecondaryBrush}"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="16"
+                   Visibility="{Binding IsSearching, Converter={StaticResource BoolToVisConverter}, ConverterParameter=Invert}"/>
+    </DockPanel>
+</UserControl>

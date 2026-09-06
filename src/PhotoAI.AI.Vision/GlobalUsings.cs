@@ -1,0 +1,9 @@
+global using PhotoAI.Core.Enums;
+global using PhotoAI.Core.Models;
+global using PhotoAI.Core.Interfaces;
+global using PhotoAI.Core.Inference;
+global using Microsoft.ML.OnnxRuntime;
+global using Microsoft.ML.OnnxRuntime.Tensors;
+global using SixLabors.ImageSharp;
+global using SixLabors.ImageSharp.PixelFormats;
+global using SixLabors.ImageSharp.Processing;

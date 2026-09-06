@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PhotoAI.AI</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoAI.Core\PhotoAI.Core.csproj" />
+    <ProjectReference Include="..\PhotoAI.AI.Vision\PhotoAI.AI.Vision.csproj" />
+    <ProjectReference Include="..\PhotoAI.AI.Face\PhotoAI.AI.Face.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.22.0" />
+    <PackageReference Include="Microsoft.ML.OnnxRuntime.Managed" Version="1.22.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.2" />
+    <!-- GPU package - optional, requires network access -->
+    <!-- <PackageReference Include="Microsoft.ML.OnnxRuntime.Gpu" Version="1.22.0" /> -->
+  </ItemGroup>
+
+</Project>

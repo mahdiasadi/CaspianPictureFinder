@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon />
+    <RootNamespace>PhotoAI.App</RootNamespace>
+    <AssemblyName>PhotoAI.App</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.2" />
+    <PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoAI.Application\PhotoAI.Application.csproj" />
+    <ProjectReference Include="..\PhotoAI.AI\PhotoAI.AI.csproj" />
+    <ProjectReference Include="..\PhotoAI.Core\PhotoAI.Core.csproj" />
+    <ProjectReference Include="..\PhotoAI.Infrastructure\PhotoAI.Infrastructure.csproj" />
+    <ProjectReference Include="..\PhotoAI.Indexing\PhotoAI.Indexing.csproj" />
+    <ProjectReference Include="..\PhotoAI.Search\PhotoAI.Search.csproj" />
+    <ProjectReference Include="..\PhotoAI.Storage\PhotoAI.Storage.csproj" />
+    <ProjectReference Include="..\PhotoAI.Vector\PhotoAI.Vector.csproj" />
+  </ItemGroup>
+
+</Project>

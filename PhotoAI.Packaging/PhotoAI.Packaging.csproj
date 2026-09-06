@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win10-x64</RuntimeIdentifiers>
+    <AppxPackageDir>$(MSBuildProjectDirectory)\..\artifacts\msix</AppxPackageDir>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x64</AppxBundlePlatforms>
+    <GenerateAppInstallerFile>True</AppxBundle>
+    <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
+    <AppInstallerUri>https://github.com/yourusername/PhotoAI/releases/</AppInstallerUri>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\src\PhotoAI.App\PhotoAI.App.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\Package.appxmanifest" Link="Package.appxmanifest" />
+    <None Include="..\Assets\*.png">
+      <Link>Assets\%(Filename)%(Extension)</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

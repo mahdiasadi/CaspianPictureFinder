@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>PhotoAI.Indexing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PhotoAI.Core\PhotoAI.Core.csproj" />
+    <ProjectReference Include="..\PhotoAI.Application\PhotoAI.Application.csproj" />
+    <ProjectReference Include="..\PhotoAI.Media\PhotoAI.Media.csproj" />
+    <ProjectReference Include="..\PhotoAI.Storage\PhotoAI.Storage.csproj" />
+    <ProjectReference Include="..\PhotoAI.Vector\PhotoAI.Vector.csproj" />
+    <ProjectReference Include="..\PhotoAI.AI.Face\PhotoAI.AI.Face.csproj" />
+    <ProjectReference Include="..\PhotoAI.AI.Vision\PhotoAI.AI.Vision.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>

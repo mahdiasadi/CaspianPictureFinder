@@ -1,0 +1,76 @@
+<UserControl x:Class="PhotoAI.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:PhotoAI.App.ViewModels">
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Top" Margin="0,0,0,24">
+            <TextBlock Text="Settings" FontSize="24" FontWeight="Bold" 
+                       Foreground="{StaticResource TextPrimaryBrush}"/>
+        </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel MaxWidth="600" HorizontalAlignment="Left">
+                <!-- Processing -->
+                <TextBlock Text="Processing" FontSize="18" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+                
+                <Border Background="{StaticResource CardBrush}" CornerRadius="8" Padding="16" Margin="0,0,0,16">
+                    <StackPanel>
+                        <TextBlock Text="Inference Backend" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,4"/>
+                        <TextBlock Text="Choose CPU or GPU for AI processing" 
+                                   Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="0,0,0,8"/>
+                        <ComboBox ItemsSource="{Binding Backends}" 
+                                  SelectedItem="{Binding SelectedBackend}"
+                                  Width="200" HorizontalAlignment="Left"
+                                  Background="{StaticResource CardBrush}" 
+                                  Foreground="{StaticResource TextPrimaryBrush}"/>
+
+                        <TextBlock Text="GPU Batch Size" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,16,0,4"/>
+                        <TextBlock Text="Number of images processed simultaneously on GPU" 
+                                   Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="0,0,0,8"/>
+                        <TextBox Text="{Binding GpuBatchSize}" Width="100" HorizontalAlignment="Left"
+                                 Style="{StaticResource SearchBox}" FontSize="14"/>
+
+                        <TextBlock Text="CPU Worker Count" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,16,0,4"/>
+                        <TextBlock Text="Number of parallel CPU inference workers" 
+                                   Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="0,0,0,8"/>
+                        <TextBox Text="{Binding CpuWorkerCount}" Width="100" HorizontalAlignment="Left"
+                                 Style="{StaticResource SearchBox}" FontSize="14"/>
+
+                        <TextBlock Text="Max Concurrent Jobs" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,16,0,4"/>
+                        <TextBlock Text="Maximum parallel indexing jobs" 
+                                   Foreground="{StaticResource TextSecondaryBrush}" FontSize="12" Margin="0,0,0,8"/>
+                        <TextBox Text="{Binding MaxConcurrentJobs}" Width="100" HorizontalAlignment="Left"
+                                 Style="{StaticResource SearchBox}" FontSize="14"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Privacy -->
+                <TextBlock Text="Privacy" FontSize="18" FontWeight="SemiBold"
+                           Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,12"/>
+                
+                <Border Background="{StaticResource CardBrush}" CornerRadius="8" Padding="16" Margin="0,0,0,16">
+                    <StackPanel>
+                        <CheckBox Content="Start indexing automatically on startup" 
+                                  IsChecked="{Binding AutoStartIndexing}"
+                                  Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,8"/>
+                        <TextBlock Text="Your photos never leave this computer. All processing is done locally." 
+                                   Foreground="{StaticResource AccentBrush}" FontSize="13" FontWeight="SemiBold"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Save Button -->
+                <Button Content="Save Settings" 
+                        Command="{Binding SaveSettingsCommand}"
+                        Background="{StaticResource AccentBrush}" Foreground="White"
+                        BorderThickness="0" Padding="24,10" FontSize="14"
+                        HorizontalAlignment="Left" Margin="0,8"/>
+                
+                <TextBlock Text="{Binding StatusMessage}" 
+                           Foreground="{StaticResource TextSecondaryBrush}" FontSize="12"
+                           Margin="12,0,0,0" VerticalAlignment="Center"/>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</UserControl>
